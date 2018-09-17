@@ -44,6 +44,18 @@ void Window::detach(Widget &b)
   b.hide();
 }
 
+void Window::attach(Group &g)
+{
+  begin();         // FTLK: begin attaching new Fl_Wigets to this window
+  g.attach(*this); // let the Widget create its Fl_Wigits
+  end();           // FTLK: stop attaching new Fl_Wigets to this window
+}
+
+void Window::detach(Group &g)
+{
+  g.hide();
+}
+
 void Window::attach(Shape &s)
 {
   shapes.push_back(&s);
@@ -72,4 +84,4 @@ void Window::put_on_top(Shape &p)
 
 int gui_main() { return Fl::run(); }
 
-} // Graph
+} // namespace Graph_lib

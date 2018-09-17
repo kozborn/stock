@@ -13,6 +13,7 @@ namespace Graph_lib
 
 class Shape; // "forward declare" Shape
 class Widget;
+class Group;
 
 class Window : public Fl_Window
 {
@@ -34,9 +35,11 @@ public:
 
   void attach(Shape &s);
   void attach(Widget &w);
+  void attach(Group &g);
 
   void detach(Shape &s);  // remove s from shapes
   void detach(Widget &w); // remove w from window (deactivate callbacks)
+  void detach(Group &g);  // remove g from window (deactivate callbacks)
 
   void put_on_top(Shape &p); // put p on top of other shapes
 
@@ -54,5 +57,5 @@ int gui_main(); // invoke GUI library's main event loop
 
 inline int x_max() { return Fl::w(); } // width of screen in pixels
 inline int y_max() { return Fl::h(); } // height of screen in pixels
-}
+} // namespace Graph_lib
 #endif
